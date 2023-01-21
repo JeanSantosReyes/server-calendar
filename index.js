@@ -22,6 +22,11 @@ app.use(express.json());
 app.use('/api/auth/', require('./routes/auth'));
 app.use('/api/events/', require('./routes/events'));
 
+// Tratar rutas al subir proyecto en un servidor - React
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+})
+
 // Escuchar peticion
 app.listen(process.env.PORT, () => {
     console.log(`Servidor corriendo en el puerto ${process.env.PORT}`);
